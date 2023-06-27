@@ -1,0 +1,18 @@
+USE quanlysinhvien;
+SELECT * FROM quanlysinhvien.class;
+INSERT INTO `quanlysinhvien`.`class` (`ClassID`, `ClassName`, `StartDate`, `Status`) VALUES ('1', 'A1', '2008/12/20', b'1');
+INSERT INTO `quanlysinhvien`.`class` (`ClassID`, `ClassName`, `StartDate`, `Status`) VALUES ('2', 'A2', '2008/12/22', b'1');
+INSERT INTO `quanlysinhvien`.`class` (`ClassID`, `ClassName`, `StartDate`, `Status`) VALUES ('3', 'B3', '2023/6/27', b'0');
+SELECT * FROM quanlysinhvien.student;
+INSERT INTO `quanlysinhvien`.`student` (`StudentID`, `StudentName`, `Address`, `Phone`, `Status`, `ClassID`) VALUES ('1', 'Hung', 'Ha noi', '0987654321', b'1', '1');
+INSERT INTO `quanlysinhvien`.`student` (`StudentID`, `StudentName`, `Address`, `Status`, `ClassID`) VALUES ('2', 'Hoa', 'Hai phong', b'1', '1');
+INSERT INTO `quanlysinhvien`.`student` (`StudentID`, `StudentName`, `Address`, `Phone`, `Status`, `ClassID`) VALUES ('3', 'Manh', 'HCM', '0123456789', b'0', '2');
+SELECT * FROM quanlysinhvien.subject;
+INSERT INTO `quanlysinhvien`.`subject` (`SubID`, `SubName`, `Credit`, `Status`) VALUES ('1', 'CF', '5', b'1');
+INSERT INTO `quanlysinhvien`.`subject` (`SubID`, `SubName`, `Credit`, `Status`) VALUES ('2', 'C', '6', b'1');
+INSERT INTO `quanlysinhvien`.`subject` (`SubID`, `SubName`, `Credit`, `Status`) VALUES ('3', 'HDJ', '5', b'1');
+INSERT INTO `quanlysinhvien`.`subject` (`SubID`, `SubName`, `Credit`, `Status`) VALUES ('4', 'RDBMS', '10', b'1');
+SELECT * FROM quanlysinhvien.mark;
+INSERT INTO `quanlysinhvien`.`mark` (`MarkID`, `SubID`, `StudentID`, `Mark`, `ExamTimes`) VALUES ('1', '1', '1', '8', '1');
+INSERT INTO `quanlysinhvien`.`mark` (`MarkID`, `SubID`, `StudentID`, `Mark`, `ExamTimes`) VALUES ('2', '1', '2', '10', '2');
+INSERT INTO `quanlysinhvien`.`mark` (`MarkID`, `SubID`, `StudentID`, `Mark`, `ExamTimes`) VALUES ('3', '2', '1', '12', '1');
