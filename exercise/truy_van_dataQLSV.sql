@@ -13,3 +13,15 @@ from student S
 join mark M on S.StudentID = M.StudentID 
 join subject Sub on M.SubID = Sub.SubID
 where Sub.SubName = 'CF';
+select * from student
+where StudentName like 'h%';
+select * from class
+where month(StartDate) = 12;
+select * from subject
+where Credit between 3 and 5;
+UPDATE `student` SET `ClassID` = '2' WHERE (`StudentID` = '1');
+select s.StudentName, sub.Subname, m.Mark
+from student s
+join mark as m on m.StudentID = s.StudentID
+join subject as sub on sub.SubID = m.SubID
+order by m.Mark desc, s.StudentName asc;
