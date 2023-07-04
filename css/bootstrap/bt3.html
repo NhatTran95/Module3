@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        img{
+            width: 80px;
+            height: 80px;
+        }
+        .table th{
+            text-align: center;
+        }
+        .text-right{
+            text-align: right;
+        }
+        tr{
+            text-align: center;
+        }
+        .line{
+            border-bottom: 1px solid gray;
+        }
+        input{
+            width: 50px;
+        }
+        .table tbody .center{
+            box-sizing: border-box;
+            padding-top: 40px;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <table class="table border-dark">
+                <thead>
+                  <tr> 
+                    <th scope="col">DELETE</th>
+                    <th scope="col">IMADE</th>
+                    <th scope="col">PRODUCT</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">QUANTITY</th>
+                    <th scope="col">TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="center bi bi-trash "></td>
+                        <td><img src="ao1.jpg" alt=""></td>
+                        <td class="center"><p>ao khoac do</p></td>
+                        <td class="center"><p>$50.00</p></td>
+                        <td class="center"><input type="text" value="1"></td>
+                        <td class="center"><p>$50.00</p></td>
+                    </tr>
+                    <tr>
+                        <td class="center bi bi-trash"></td>
+                        <td><img src="ao2.jpg" alt=""></td>
+                        <td class="center"><p>ao khoac xam</p></td>
+                        <td class="center"><p>$50.00</p></td>
+                        <td class="center"><input type="text" value="1"></td>
+                        <td class="center"><p>$50.00</p></td>
+                    </tr>
+                    <tr>
+                        <td class="center bi bi-trash"></td>
+                        <td><img src="ao3.jpg" alt=""></td>
+                        <td class="center"><p>ao khoac hong</p></td>
+                        <td class="center"><p>$50.00</p></td>
+                        <td class="center"><input type="text" value="1"></td>
+                        <td class="center"><p>$50.00</p></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right" colspan="6"><button class="bg-black text-white p-2">UPDATE CARD</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="bg-black text-white p-2 m-2">COUPON</div>
+                <div class="p-2"><label for="">Enter your coupon code if you have one</label></div>
+                <div class="p-2"><input type="text" class="form-control" value="Coupon code"></div>
+                <button class="bg-black text-white p-2 m-2">APPLY COUPON</button>
+            </div>
+            <div class="col-6">
+                <div class="bg-black text-white p-2 m-2">CARTTOTAL</div>
+                <div class="d-flex justify-content-between">
+                    <div class="p-2"><label for="" class="d-block">Subtotal</label></div>
+                    <div class="p-2"><label for="" class="d-block">$100.00</label></div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="p-2"><label for="" class="d-block">Sipping</label></div>
+                    <div class="p-2"><label for="" class="d-block"><span>Flat Rate</span>$100.00</label></div>
+                </div>
+                <div class="line text-right text-danger p-2" ><label for="">Calculate Shipping</label></div>
+                <div class="d-flex justify-content-between">
+                    <div class="p-2"><label for="" class="d-block">Total</label></div>
+                    <div class="p-2"><label for="" class="d-block">$100.00</label></div>
+                </div>
+                <div class="text-right"><button class="bg-success text-white p-2 m-2">PROCEED TO CHECKOUT</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

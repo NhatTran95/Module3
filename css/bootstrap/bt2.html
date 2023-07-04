@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .head{
+            padding: 20px;
+        }
+        .head button{
+            padding: 5px;
+            border-radius: 5px;
+
+        }
+    
+        .col-3 .btn{
+            width: 95%;
+            height: 30px;
+            border-radius: 5px;
+            text-align: left;
+            padding: 0px 10px;
+    
+        }
+        select{
+            width: 95%;
+            height: 30px;
+            border-radius: 5px;
+           
+        }
+        .footer{
+            background-color: pink;
+            padding: 10px;
+            padding-left: 100px;
+            width: 100%;
+            position: fixed;
+            bottom: 0px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="head d-flex justify-content-between bg-primary align-items-center">
+            <h3 class="text-white">Transfer money Informations</h3>
+            <button class="btn btn-outline-light"><i class="bi bi-list-ul"></i> Customers list</button>
+        </div>
+        <div class="d-flex">
+            <div class="col-3 mt-2">
+                <h6>Sender ID</h6>
+                <button class="btn bg-secondary-subtle">35</button>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Sender Name</h6>
+                <button class="btn bg-secondary-subtle">Tatiana Kim</button>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Email</h6>
+                <button class="btn bg-secondary-subtle">nujixalu@malinator.com</button>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Sender balance</h6>
+                <button class="btn bg-secondary-subtle">4.000.000</button>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="col-3 mt-2">
+                <h6>Recipient Name</h6>
+                <select name="" id="" class="border-light-subtle" >
+                    <option value="(45) Halla Mosley">(45) Halla Mosley</option>
+                </select>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Transfer Amount ($)</h6>
+                <button class="btn border-light-subtle">4.000.000</button>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Fees (%)</h6>
+                <button class="btn bg-secondary-subtle">10</button>
+            </div>
+            <div class="col-3 mt-2">
+                <h6>Total amount of transaction ($)</h6>
+                <button class="btn bg-secondary-subtle">4.400.000</button>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary mt-4"><i class="bi bi-arrow-left-right"></i> Transfer</button>
+        </div>
+    </div>
+    <div class="footer text-danger">
+        <h5>Error message</h5>
+        <ul>
+            <li>The sender's balance is not enough to make the transfer</li>
+        </ul>
+    </div>
+
+    
+</body>
+</html>
