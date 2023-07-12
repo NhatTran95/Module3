@@ -15,15 +15,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name ="ProductServlet", urlPatterns = "/products")
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductServiceMysql();
     private ICategoryService categoryService = new CategoryServiceMysql();
-    private IESizeService sizeService = new ESizeServiceMysql();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,13 +48,13 @@ public class ProductServlet extends HttpServlet {
     private void showEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        long idProduct = Long.parseLong(req.getParameter("id"));
 
-        Product product =productService.findById(idProduct);
+        Product product = productService.findById(idProduct);
         req.setAttribute("product", product);
 
         List<Category> categories = categoryService.findAll();
         req.setAttribute("categories", categories);
 
-        List<ESize> sizes = sizeService.findAll();
+        ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/products/edit.jsp");
@@ -67,7 +65,7 @@ public class ProductServlet extends HttpServlet {
         List<Category> categories = categoryService.findAll();
         req.setAttribute("categories", categories);
 
-        List<ESize> sizes = sizeService.findAll();
+        ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
 
         List<Product> productList = productService.findAll();
@@ -87,7 +85,7 @@ public class ProductServlet extends HttpServlet {
         List<Product> productList = productService.findAll();
         req.setAttribute("products", productList);
 
-        List<ESize> sizes = sizeService.findAll();
+        ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
 
 
@@ -118,26 +116,19 @@ public class ProductServlet extends HttpServlet {
         BigDecimal price = new BigDecimal(priceString);
         String createAtStr = req.getParameter("createAt");
         LocalDate createAt = LocalDate.parse(createAtStr);
-//        String size = req.getParameter("size");
-//        ESize eSize = ESize.find(size);
+
         LocalDateTime now = LocalDateTime.now();
         Instant updateAtI = now.atZone(ZoneId.systemDefault()).toInstant();
-//        String updateAtStr = req.getParameter("updateAt");
-//        Instant updateAt = Instant.parse(updateAtStr);
-
-
-
 
         Product product = productService.findById(id);
         product.setDescription(description);
         product.setName(name);
         product.setPrice(price);
         product.setCreateAt(createAt);
-//        product.setSize(eSize);
         product.setUpdateAt(updateAtI);
 
         int idSize = Integer.parseInt(req.getParameter("size"));
-        ESize eSize = sizeService.findById(idSize);
+        ESize eSize = ESize.findById(idSize);
         product.setSize(eSize);
 
         int idCate = Integer.parseInt(req.getParameter("category"));
@@ -158,10 +149,10 @@ public class ProductServlet extends HttpServlet {
         String description = req.getParameter("description");
         String priceString = req.getParameter("price");
         BigDecimal price = new BigDecimal(priceString);
+
         String createAtStr = req.getParameter("createAt");
         LocalDate createAt = LocalDate.parse(createAtStr);
-//        String size = req.getParameter("size");
-//        ESize eSize = ESize.find(size);
+
         String updateAtStr = req.getParameter("updateAt");
         LocalDate date = LocalDate.parse(updateAtStr);
         LocalDateTime dateTime = date.atStartOfDay();
@@ -174,7 +165,7 @@ public class ProductServlet extends HttpServlet {
         Product product = new Product(id, name, description, price, createAt, updateAt);
 
         int idSize = Integer.parseInt(req.getParameter("size"));
-        ESize eSize = sizeService.findById(idSize);
+        ESize eSize = ESize.findById(idSize);
         product.setSize(eSize);
 
         int idCate = Integer.parseInt(req.getParameter("category"));
@@ -182,7 +173,7 @@ public class ProductServlet extends HttpServlet {
         product.setCategory(category);
         productService.save(product);
 
-        List<ESize> sizes = sizeService.findAll();
+        ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
 
         List<Category> categories = categoryService.findAll();

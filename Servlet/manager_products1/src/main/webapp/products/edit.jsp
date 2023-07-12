@@ -46,31 +46,31 @@
             </c:if>
 
             <div class="row mt-3 mb-3">
-                <label class="col-3" for="">Name: </label>
+                <label class="col-3" >Name: </label>
                 <div class="col-9">
                     <input type="text" class="form-control" name = "name" value="${product.getName()}"/>
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">Description: </label>
+                <label class="col-3" >Description: </label>
                 <div class="col-9">
                     <input type="text" class="form-control" name="description" value="${product.getDescription()}"/>
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">Price: </label>
+                <label class="col-3" >Price: </label>
                 <div class="col-9">
                     <input type="text" class="form-control" name="price" value="${product.getPrice()}"/>
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">CreateAt: </label>
+                <label class="col-3" >CreateAt: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
+                    <input type="date" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">Category: </label>
+                <label class="col-3" >Category: </label>
                 <div class="col-9">
                     <select name="category">
                         <c:forEach items="${requestScope.categories}" var="ct">
@@ -80,17 +80,17 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">Size: </label>
+                <label class="col-3" >Size: </label>
                 <div class="col-9">
                     <select name="size">
                         <c:forEach items="${requestScope.sizes}" var="s">
-                            <option ${ product.getCategory().getId() == s.getId() ? 'selected' : ''} value="${s.getId()}">${s.getName()}</option>
+                            <option ${ product.getSize().getId() == s.getId() ? 'selected' : ''} value="${s.getId()}">${s.getName()}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-3" for="">UpdateAt: </label>
+                <label class="col-3" >UpdateAt: </label>
                 <div class="col-9">
                     <input type="text" class="form-control" name="updateAt" value="<fmt:formatDate value='${product.getUpdateAtTypeUtil()}' pattern="yyyy-MM-dd" />"/>
                 </div>

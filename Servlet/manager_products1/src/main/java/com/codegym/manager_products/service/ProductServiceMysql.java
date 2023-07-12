@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceMysql implements IProductService{
-    private static final String FIND_ALL_CUSTOMERS = "SELECT p.*, c.id as id_cate, c.name as name_cate, s.id as id_size, s.name as name_size " +
-            "FROM products p join categories c on p.id_category = c.id join sizes s on p.id_size = s.id;";
-    private static final String SAVE_PRO = "INSERT INTO `products` (`name`, `description`, `price`, `createAt`, `id_category`, `id_size`, `updateAt`) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    private static final String FIND_BY_ID = "SELECT p.*, c.id as id_cate, c.name as name_cate, s.id as id_size, s.name as name_size " +
-            "FROM products p join categories c on p.id_category = c.id join sizes s on p.id_size = s.id WHERE p.id = ?;";
-    private static final String UPDATE_PRO = "UPDATE `products` SET `name` = ?, `description` = ?, `price` = ?, `createAt` = ?, `id_category` = ?, `id_size` = ?, `updateAt` = ? WHERE (`id` = ?);";
+    private static final String FIND_ALL_CUSTOMERS = "SELECT p.*, c.id as id_cate, c.name as name_cate " +
+            "FROM products p join categories c on p.id_category = c.id";
+    private static final String SAVE_PRO = "INSERT INTO `products` (`name`, `description`, `price`, `createAt`, `id_category`, `size`, `updateAt`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    private static final String FIND_BY_ID = "SELECT p.*, c.id as id_cate, c.name as name_cate " +
+            "FROM products p join categories c on p.id_category = c.id WHERE p.id = ?;";
+    private static final String UPDATE_PRO = "UPDATE `products` SET `name` = ?, `description` = ?, `price` = ?, `createAt` = ?, `id_category` = ?, `size` = ?, `updateAt` = ? WHERE (`id` = ?);";
     private static final String REMOVE_PRO = "DELETE FROM `products` WHERE (`id` = ?);";
     private String jdbcURL = "jdbc:mysql://localhost:3306/manager_product?useSSL=false";
     private String jdbcUsername = "root";
@@ -45,7 +45,7 @@ public class ProductServiceMysql implements IProductService{
                 LocalDate localDate = updateAt.toLocalDate();
                 LocalDateTime localDateTime = localDate.atStartOfDay();
                 Instant updateAtI = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
-                String size = rs.getString("name_size");
+                String size = rs.getString("size");
                 ESize eSize = ESize.find(size);
 
 
@@ -103,14 +103,18 @@ public class ProductServiceMysql implements IProductService{
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setBigDecimal(3, product.getPrice());
+
             LocalDate localDate = product.getCreateAt();
             java.sql.Date createAt = java.sql.Date.valueOf(localDate);
             preparedStatement.setDate(4, createAt);
+
             preparedStatement.setInt(5, product.getCategory().getId());
-            preparedStatement.setInt(6, product.getSize().getId());
+            preparedStatement.setString(6, product.getSize().getName());
+
             Instant instant = product.getUpdateAt();
             java.sql.Date updateAt = new java.sql.Date(instant.toEpochMilli());
             preparedStatement.setDate(7, updateAt);
+            
             System.out.println("save: " + preparedStatement);
             preparedStatement.executeUpdate();
             connection.close();
@@ -139,9 +143,8 @@ public class ProductServiceMysql implements IProductService{
                 LocalDate localDate = updateAt.toLocalDate();
                 LocalDateTime localDateTime = localDate.atStartOfDay();
                 Instant updateAtI = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
-//                java.sql.Timestamp timestamp = new java.sql.Timestamp(updateAt.getTime());
-//                Instant updateAtI = timestamp.toInstant();
-                String size = rs.getString("name_size");
+
+                String size = rs.getString("size");
                 ESize eSize = ESize.find(size);
 
                 Product product = new Product(id, name, description, price, createAtL, updateAtI );
@@ -172,7 +175,7 @@ public class ProductServiceMysql implements IProductService{
             java.sql.Date createAt = java.sql.Date.valueOf(localDate);
             preparedStatement.setDate(4, createAt);
             preparedStatement.setInt(5, product.getCategory().getId());
-            preparedStatement.setInt(6, product.getSize().getId());
+            preparedStatement.setString(6, product.getSize().getName());
             Instant instant = product.getUpdateAt();
             java.sql.Date updateAt = new java.sql.Date(instant.toEpochMilli());
             preparedStatement.setDate(7, updateAt);
