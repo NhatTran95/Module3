@@ -3,6 +3,7 @@ package com.codegym.manager_products.model;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Product {
     private long id;
@@ -25,6 +26,10 @@ public class Product {
 
     public Instant getUpdateAt() {
         return updateAt;
+    }
+
+    public Date getUpdateAtTypeUtil(){
+        return Date.from(this.getUpdateAt());
     }
 
     public void setUpdateAt(Instant updateAt) {

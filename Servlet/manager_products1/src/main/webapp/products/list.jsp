@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.time.Instant" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 10/07/2023
@@ -7,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +63,7 @@
             <%--        <c:set scope="session" var="messageEdit" value="null"></c:set>--%>
             <% session.setAttribute("messageDelete", null);%>
         </c:if>
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -84,7 +86,8 @@
                     <td>${p.getCreateAt()}</td>
                     <td>${p.getCategory().getName()}</td>
                     <td>${p.getSize().getName()}</td>
-                    <td>${p.getUpdateAt()}</td>
+                    <td><fmt:formatDate value="${p.getUpdateAtTypeUtil()}" pattern="yyyy-MM-dd" /></td>
+
                     <td>
                         <a href="/products?action=edit&id=${p.getId()}"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="javascript:void(0)" onclick="handleDeleteClick(${p.getId()}, '${p.getName()}')"><i class="fa-solid fa-trash"></i></a>

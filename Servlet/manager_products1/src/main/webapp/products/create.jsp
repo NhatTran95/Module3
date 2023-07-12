@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +66,7 @@
             <div class="row mb-3">
                 <label class="col-3" for="">CreateAt: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="createAt"/>
+                    <input type="date" class="form-control" name="createAt" value="<fmt:formatDate value='${product.getUpdateAtTypeUtil()}' pattern="yyyy-MM-dd" />"/>
                 </div>
             </div>
             <div class="row mb-3">
@@ -91,7 +92,7 @@
             <div class="row mb-3">
                 <label class="col-3" for="">UpdateAt: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="updateAt"/>
+                    <input type="date" class="form-control" name="updateAt" value="<fmt:formatDate value='${product.getUpdateAtTypeUtil()}' pattern="yyyy-MM-dd" />"/>
                 </div>
             </div>
             <div class="row mb-3">

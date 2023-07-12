@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.LocalDate;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name ="ProductServlet", urlPatterns = "/products")
@@ -118,8 +120,11 @@ public class ProductServlet extends HttpServlet {
         LocalDate createAt = LocalDate.parse(createAtStr);
 //        String size = req.getParameter("size");
 //        ESize eSize = ESize.find(size);
-        String updateAtStr = req.getParameter("updateAt");
-        Instant updateAt = Instant.parse(updateAtStr);
+        LocalDateTime now = LocalDateTime.now();
+        Instant updateAtI = now.atZone(ZoneId.systemDefault()).toInstant();
+//        String updateAtStr = req.getParameter("updateAt");
+//        Instant updateAt = Instant.parse(updateAtStr);
+
 
 
 
@@ -129,7 +134,7 @@ public class ProductServlet extends HttpServlet {
         product.setPrice(price);
         product.setCreateAt(createAt);
 //        product.setSize(eSize);
-        product.setUpdateAt(updateAt);
+        product.setUpdateAt(updateAtI);
 
         int idSize = Integer.parseInt(req.getParameter("size"));
         ESize eSize = sizeService.findById(idSize);
@@ -141,6 +146,7 @@ public class ProductServlet extends HttpServlet {
 
 
         productService.update(id, product);
+        req.setAttribute("updateAt", updateAtI);
         req.getSession().setAttribute("messageEdit", "Sửa thành công");
         resp.sendRedirect("/products");            // Dùng respone để sendRedirect
 
@@ -157,7 +163,11 @@ public class ProductServlet extends HttpServlet {
 //        String size = req.getParameter("size");
 //        ESize eSize = ESize.find(size);
         String updateAtStr = req.getParameter("updateAt");
-        Instant updateAt = Instant.parse(updateAtStr);
+        LocalDate date = LocalDate.parse(updateAtStr);
+        LocalDateTime dateTime = date.atStartOfDay();
+        ZonedDateTime zonedDateTime = dateTime.atZone(ZoneOffset.UTC);
+        String updateAtStr1 = zonedDateTime.format(DateTimeFormatter.ISO_INSTANT);
+        Instant updateAt = Instant.parse(updateAtStr1);
 
 
         long id = (long)(Math.random() * 10000);

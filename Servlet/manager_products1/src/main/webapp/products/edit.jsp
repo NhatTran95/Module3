@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 10/07/2023
@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +92,7 @@
             <div class="row mb-3">
                 <label class="col-3" for="">UpdateAt: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="updateAt" value="${product.getUpdateAt()}"/>
+                    <input type="text" class="form-control" name="updateAt" value="<fmt:formatDate value='${product.getUpdateAtTypeUtil()}' pattern="yyyy-MM-dd" />"/>
                 </div>
             </div>
             <div class="row mb-3">
