@@ -79,6 +79,22 @@
                 </div>
             </div>
             <div class="row mb-3">
+                <label class="col-3" for="">Size: </label>
+                <div class="col-9">
+                    <select name="size">
+                        <c:forEach items="${requestScope.sizes}" var="s">
+                            <option ${ product.getCategory().getId() == s.getId() ? 'selected' : ''} value="${s.getId()}">${s.getName()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-3" for="">UpdateAt: </label>
+                <div class="col-9">
+                    <input type="text" class="form-control" name="updateAt" value="${product.getUpdateAt()}"/>
+                </div>
+            </div>
+            <div class="row mb-3">
                 <div class="col-9 offset-3">
                     <button class="btn btn-primary">Save</button>
                     <a href="/products"><button type="button" class="btn btn-dark">Cancel</button></a>

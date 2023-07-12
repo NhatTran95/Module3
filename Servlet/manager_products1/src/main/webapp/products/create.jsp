@@ -24,7 +24,7 @@
 <div class="container d-flex justify-content-center">
     <div class="col-6 mt-5">
         <form method="post" >
-            <h4>Edit</h4>
+            <h4>Create</h4>
             <%--           <c:if test="${requestScope.message != null}">--%>
             <%--               <div class="alert alert-danger">--%>
             <%--                   <label>${requestScope.message}</label>--%>
@@ -47,25 +47,25 @@
             <div class="row mt-3 mb-3">
                 <label class="col-3" for="">Name: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name = "name" value="${product.getName()}"/>
+                    <input type="text" class="form-control" name = "name"/>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-3" for="">Description: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="description" value="${product.getDescription()}"/>
+                    <input type="text" class="form-control" name="description"/>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-3" for="">Price: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="price" value="${product.getPrice()}"/>
+                    <input type="text" class="form-control" name="price"/>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-3" for="">CreateAt: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
+                    <input type="text" class="form-control" name="createAt"/>
                 </div>
             </div>
             <div class="row mb-3">
@@ -73,15 +73,31 @@
                 <div class="col-9">
                     <select name="category">
                         <c:forEach items="${requestScope.categories}" var="ct">
-                            <option ${ product.getCategory().getId() == ct.getId() ? 'selected' : ''} value="${ct.getId()}">${ct.getName()}</option>
+                            <option value="${ct.getId()}">${ct.getName()}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
+                <label class="col-3" for="">Size: </label>
+                <div class="col-9">
+                    <select name="size">
+                        <c:forEach items="${requestScope.sizes}" var="s">
+                            <option value="${s.getId()}">${s.getName()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-3" for="">UpdateAt: </label>
+                <div class="col-9">
+                    <input type="text" class="form-control" name="updateAt"/>
+                </div>
+            </div>
+            <div class="row mb-3">
                 <div class="col-9 offset-3">
-                    <button class="btn btn-primary">Save</button>
-                    <a href="/products"><button type="button" class="btn btn-dark">Cancel</button></a>
+                    <button class="btn btn-primary">Create</button>
+                    <a href="/products"><button type="button" class="btn btn-dark">Back</button></a>
                 </div>
             </div>
         </form>

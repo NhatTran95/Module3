@@ -70,6 +70,8 @@
                 <th>Price</th>
                 <th>CreateAt</th>
                 <th>Category</th>
+                <th>Size</th>
+                <th>UpdateAt</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -81,6 +83,8 @@
                     <td>${p.getPrice()}</td>
                     <td>${p.getCreateAt()}</td>
                     <td>${p.getCategory().getName()}</td>
+                    <td>${p.getSize().getName()}</td>
+                    <td>${p.getUpdateAt()}</td>
                     <td>
                         <a href="/products?action=edit&id=${p.getId()}"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="javascript:void(0)" onclick="handleDeleteClick(${p.getId()}, '${p.getName()}')"><i class="fa-solid fa-trash"></i></a>
