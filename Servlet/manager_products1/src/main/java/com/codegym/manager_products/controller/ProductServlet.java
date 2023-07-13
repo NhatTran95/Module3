@@ -4,7 +4,9 @@ import com.codegym.manager_products.model.Category;
 import com.codegym.manager_products.model.ESize;
 import com.codegym.manager_products.model.Product;
 import com.codegym.manager_products.service.*;
+import com.codegym.manager_products.utils.ValidatesUtils;
 
+import javax.jws.Oneway;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name ="ProductServlet", urlPatterns = "/products")
@@ -108,47 +111,146 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void updateProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        long id = Long.parseLong(req.getParameter("id"));
-        String name = req.getParameter("name");
-        String description = req.getParameter("description");
-        String priceString = req.getParameter("price");
-        BigDecimal price = new BigDecimal(priceString);
+    private void updateProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        Product product = new Product();
+        List<String> errors = new ArrayList<>();
+
+        validateIdProduct(req, product, errors);
+        validateNameProduct(req, product, errors);
+        validateDesProduct(req, product, errors);
+        validatePriceProduct(req, product, errors);
+        validateSizeProduct(req, product, errors);
+        validateCateProduct(req, product, errors);
+       
+
+
+
         String createAtStr = req.getParameter("createAt");
         LocalDate createAt = LocalDate.parse(createAtStr);
 
         LocalDateTime now = LocalDateTime.now();
         Instant updateAtI = now.atZone(ZoneId.systemDefault()).toInstant();
 
-        Product product = productService.findById(id);
-        product.setDescription(description);
-        product.setName(name);
-        product.setPrice(price);
+
         product.setCreateAt(createAt);
         product.setUpdateAt(updateAtI);
 
-        int idSize = Integer.parseInt(req.getParameter("size"));
-        ESize eSize = ESize.findById(idSize);
-        product.setSize(eSize);
+//        int idSize = Integer.parseInt(req.getParameter("size"));
+//        ESize eSize = ESize.findById(idSize);
+//        product.setSize(eSize);
+        
+        if(!errors.isEmpty()){
+            req.setAttribute("errors", errors);
+            req.setAttribute("product", product);
+            List<Category> categories = categoryService.findAll();
+            req.setAttribute("categories" , categories);
+            ESize[] sizes = ESize.values();
+            req.setAttribute("sizes", sizes);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/products/edit.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+        else {
+            productService.update(product.getId(), product);
+            req.setAttribute("updateAt", updateAtI);
+            req.getSession().setAttribute("messageEdit", "Sửa thành công");
+            resp.sendRedirect("/products");            // Dùng respone để sendRedirect
+        }
 
-        int idCate = Integer.parseInt(req.getParameter("category"));
-        Category category = categoryService.findById(idCate);
-        product.setCategory(category);
 
-
-        productService.update(id, product);
-        req.setAttribute("updateAt", updateAtI);
-        req.getSession().setAttribute("messageEdit", "Sửa thành công");
-        resp.sendRedirect("/products");            // Dùng respone để sendRedirect
 
 
     }
 
-    private void saveProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
+    private void validateSizeProduct(HttpServletRequest req, Product product, List<String> errors) {
+        ESize eSize = null;
+        try {
+            // idCate có 2 trường hợp: "aaa" hoặc mã ko hợp lệ ko có trong DB 20000
+            int idSize = Integer.parseInt(req.getParameter("size"));
+            eSize = ESize.findById(idSize);
+            if (eSize == null) {
+                errors.add("size sản phẩm không có trong csdl");
+            }
+        } catch (NumberFormatException numberFormatException) {
+            errors.add("Định dạng của size sản phẩm không hợp lệ");
+        }
+        product.setSize(eSize);
+    }
+
+    private void validateCateProduct(HttpServletRequest req, Product product, List<String> errors) {
+        Category ct = null;
+        try {
+            // idCate có 2 trường hợp: "aaa" hoặc mã ko hợp lệ ko có trong DB 20000
+            int idCate = Integer.parseInt(req.getParameter("category"));
+            ct = categoryService.findById(idCate);
+            if (ct == null) {
+                errors.add("Loại sản phẩm không có trong csdl");
+            }
+        } catch (NumberFormatException numberFormatException) {
+            errors.add("Định dạng của loại sản phẩm không hợp lệ");
+        }
+        product.setCategory(ct);
+    }
+
+    private void validatePriceProduct(HttpServletRequest req, Product product, List<String> errors) {
+        try{
+            String priceString = req.getParameter("price");
+            if (!ValidatesUtils.isDesValid(priceString)) {
+                errors.add("Giá không hợp lệ, là số bắt đầu khác 0 và phải có từ 5-9 kí tự số");
+            }
+            BigDecimal price = new BigDecimal(priceString);
+            product.setPrice(price);
+        }catch (NumberFormatException n){
+            errors.add("Định dạng giá không hợp lệ");
+        }
+
+    }
+
+    private void validateDesProduct(HttpServletRequest req, Product product, List<String> errors) {
         String description = req.getParameter("description");
-        String priceString = req.getParameter("price");
-        BigDecimal price = new BigDecimal(priceString);
+        if (!ValidatesUtils.isDesValid(description)) {
+            errors.add("Mô tả không hợp lệ, bắt đầu bằng chữ cái và phải có từ 15-50 kí tự");
+        }
+        product.setDescription(description);
+    }
+
+    private void validateNameProduct(HttpServletRequest req, Product product, List<String> errors) {
+        String name = req.getParameter("name");
+        if (!ValidatesUtils.isNameValid(name)) {
+            errors.add("Tên không hợp lệ, bắt đầu bằng chữ cái và phải có từ 8-20 kí tự");
+        }
+        product.setName(name);
+    }
+
+    private void validateIdProduct(HttpServletRequest req, Product product, List<String> errors) {
+        try {
+            long id = Long.parseLong(req.getParameter("id"));
+            if (productService.findById(id)==null) {
+                errors.add("Mã sản phẩm không hợp lệ");
+            }
+            product.setId(id);
+        } catch (NumberFormatException numberFormatException) {
+            errors.add("Định dạng mã sản phẩm không hợp lệ");
+        }
+    }
+
+    private void saveProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Product product = new Product();
+        List<String> errors = new ArrayList<>();
+
+//        validateIdProduct(req, product, errors);
+        validateNameProduct(req, product, errors);
+        validateDesProduct(req, product, errors);
+        validatePriceProduct(req, product, errors);
+        validateSizeProduct(req, product, errors);
+        validateCateProduct(req, product, errors);
+
+
+
+
+//        String name = req.getParameter("name");
+//        String description = req.getParameter("description");
+//        String priceString = req.getParameter("price");
+//        BigDecimal price = new BigDecimal(priceString);
 
         String createAtStr = req.getParameter("createAt");
         LocalDate createAt = LocalDate.parse(createAtStr);
@@ -160,18 +262,21 @@ public class ProductServlet extends HttpServlet {
         String updateAtStr1 = zonedDateTime.format(DateTimeFormatter.ISO_INSTANT);
         Instant updateAt = Instant.parse(updateAtStr1);
 
+        product.setCreateAt(createAt);
+        product.setUpdateAt(updateAt);
 
-        long id = (long)(Math.random() * 10000);
-        Product product = new Product(id, name, description, price, createAt, updateAt);
 
-        int idSize = Integer.parseInt(req.getParameter("size"));
-        ESize eSize = ESize.findById(idSize);
-        product.setSize(eSize);
+//        long id = (long)(Math.random() * 10000);
+//        Product product = new Product(id, name, description, price, createAt, updateAt);
 
-        int idCate = Integer.parseInt(req.getParameter("category"));
-        Category category = categoryService.findById(idCate);
-        product.setCategory(category);
-        productService.save(product);
+//        int idSize = Integer.parseInt(req.getParameter("size"));
+//        ESize eSize = ESize.findById(idSize);
+//        product.setSize(eSize);
+//
+//        int idCate = Integer.parseInt(req.getParameter("category"));
+//        Category category = categoryService.findById(idCate);
+//        product.setCategory(category);
+//        productService.save(product);
 
         ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
@@ -179,7 +284,15 @@ public class ProductServlet extends HttpServlet {
         List<Category> categories = categoryService.findAll();
         req.setAttribute("categories", categories);
 
-        req.setAttribute("message", "Thêm thành công");
+        if(!errors.isEmpty()){
+            req.setAttribute("errors", errors);
+            req.setAttribute("product", product);
+        }else {
+            req.setAttribute("message", "Thêm thành công");
+            productService.save(product);
+        }
+
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/products/create.jsp");
         requestDispatcher.forward(req, resp);
     }
