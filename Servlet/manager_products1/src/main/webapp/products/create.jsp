@@ -75,7 +75,7 @@
             <div class="row mb-3">
                 <label class="col-3" for="">CreateAt: </label>
                 <div class="col-9">
-                    <input type="date" class="form-control" name="createAt" value="<fmt:formatDate value='${product.getUpdateAtTypeUtil()}' pattern="yyyy-MM-dd" />"/>
+                    <input type="date" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
                 </div>
             </div>
             <div class="row mb-3">

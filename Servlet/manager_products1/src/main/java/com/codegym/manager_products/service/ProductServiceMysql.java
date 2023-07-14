@@ -16,6 +16,7 @@ import java.util.List;
 public class ProductServiceMysql implements IProductService{
     private static final String FIND_ALL_CUSTOMERS = "SELECT p.*, c.id as id_cate, c.name as name_cate " +
             "FROM products p join categories c on p.id_category = c.id";
+//    private static final String SAVE_PRO = "INSERT INTO `products` (`name`, `description`, `price`, `createAt`, `id_category`, `size`) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String SAVE_PRO = "INSERT INTO `products` (`name`, `description`, `price`, `createAt`, `id_category`, `size`, `updateAt`) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String FIND_BY_ID = "SELECT p.*, c.id as id_cate, c.name as name_cate " +
             "FROM products p join categories c on p.id_category = c.id WHERE p.id = ?;";

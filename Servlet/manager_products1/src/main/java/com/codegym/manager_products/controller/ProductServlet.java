@@ -26,6 +26,7 @@ public class ProductServlet extends HttpServlet {
     private ICategoryService categoryService = new CategoryServiceMysql();
 
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -65,11 +66,17 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        long idProduct = Long.parseLong(req.getParameter("id"));
+//
+//        Product product = productService.findById(idProduct);
+//        req.setAttribute("product", product);
+
         List<Category> categories = categoryService.findAll();
         req.setAttribute("categories", categories);
 
         ESize[] sizes = ESize.values();
         req.setAttribute("sizes", sizes);
+
 
         List<Product> productList = productService.findAll();
         req.setAttribute("products", productList);
@@ -194,7 +201,7 @@ public class ProductServlet extends HttpServlet {
     private void validatePriceProduct(HttpServletRequest req, Product product, List<String> errors) {
         try{
             String priceString = req.getParameter("price");
-            if (!ValidatesUtils.isDesValid(priceString)) {
+            if (!ValidatesUtils.isPriceValid(priceString)) {
                 errors.add("Giá không hợp lệ, là số bắt đầu khác 0 và phải có từ 5-9 kí tự số");
             }
             BigDecimal price = new BigDecimal(priceString);
@@ -252,17 +259,20 @@ public class ProductServlet extends HttpServlet {
 //        String priceString = req.getParameter("price");
 //        BigDecimal price = new BigDecimal(priceString);
 
-        String createAtStr = req.getParameter("createAt");
-        LocalDate createAt = LocalDate.parse(createAtStr);
+//        String createAtStr = req.getParameter("createAt");
+//        LocalDate createAt = LocalDate.parse(createAtStr);
 
-        String updateAtStr = req.getParameter("updateAt");
-        LocalDate date = LocalDate.parse(updateAtStr);
-        LocalDateTime dateTime = date.atStartOfDay();
-        ZonedDateTime zonedDateTime = dateTime.atZone(ZoneOffset.UTC);
-        String updateAtStr1 = zonedDateTime.format(DateTimeFormatter.ISO_INSTANT);
-        Instant updateAt = Instant.parse(updateAtStr1);
+//        String updateAtStr = req.getParameter("updateAt");
+//        LocalDate date = LocalDate.parse(updateAtStr);
+//        LocalDateTime dateTime = date.atStartOfDay();
+//        ZonedDateTime zonedDateTime = dateTime.atZone(ZoneOffset.UTC);
+//        String updateAtStr1 = zonedDateTime.format(DateTimeFormatter.ISO_INSTANT);
+//        Instant updateAt = Instant.parse(updateAtStr1);
 
-        product.setCreateAt(createAt);
+        LocalDate now = LocalDate.now();
+        product.setCreateAt(now);
+        LocalDateTime now1 = LocalDateTime.now();
+        Instant updateAt = now1.atZone(ZoneId.systemDefault()).toInstant();
         product.setUpdateAt(updateAt);
 
 

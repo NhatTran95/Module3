@@ -75,7 +75,7 @@
             <div class="row mb-3">
                 <label class="col-3" >CreateAt: </label>
                 <div class="col-9">
-                    <input type="date" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
+                    <input type="text" class="form-control" name="createAt" value="${product.getCreateAt()}"/>
                 </div>
             </div>
             <div class="row mb-3">
