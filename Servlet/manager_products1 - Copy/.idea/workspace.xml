@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="manager_products:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d96b538c-d753-4e49-9168-3fe6ca1868d3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../manager_products/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/controller/ProductServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/model/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/service/CategoryServiceMysql.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/service/ICategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/service/IProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/java/com/codegym/manager_products/service/ProductServiceMysql.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/webapp/products/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/webapp/products/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager_products/src/main/webapp/products/list.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="package.json" />
+        <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="2SMdlAdbMtTJNprCKdhf8OwLbJ8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/Module3/Module3/Servlet/tour_manager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.768" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.768" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="manager_products:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="ddfbcc15-ecec-4707-b759-7ea226e70ee8" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49445" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="manager_products:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d96b538c-d753-4e49-9168-3fe6ca1868d3" name="Changes" comment="" />
+      <created>1688960532137</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688960532137</updated>
+      <workItem from="1688960533173" duration="7176000" />
+      <workItem from="1688970683511" duration="1333000" />
+      <workItem from="1689021281611" duration="4491000" />
+      <workItem from="1689037276363" duration="384000" />
+      <workItem from="1689046589241" duration="167000" />
+      <workItem from="1689048004607" duration="135000" />
+      <workItem from="1689059698481" duration="11765000" />
+      <workItem from="1689113018139" duration="319000" />
+      <workItem from="1689113740712" duration="4044000" />
+      <workItem from="1689122243482" duration="10120000" />
+      <workItem from="1689132663642" duration="45000" />
+      <workItem from="1689132966482" duration="5158000" />
+      <workItem from="1689138929806" duration="2255000" />
+      <workItem from="1689149269025" duration="620000" />
+      <workItem from="1689152854820" duration="4806000" />
+      <workItem from="1689169663448" duration="8490000" />
+      <workItem from="1689197985942" duration="6929000" />
+      <workItem from="1689215338694" duration="2483000" />
+      <workItem from="1689229430168" duration="190000" />
+      <workItem from="1689229830451" duration="2512000" />
+      <workItem from="1689290383328" duration="2525000" />
+      <workItem from="1689305661416" duration="1483000" />
+      <workItem from="1689522037673" duration="740000" />
+      <workItem from="1689523264842" duration="99000" />
+      <workItem from="1689540484445" duration="794000" />
+      <workItem from="1689541288624" duration="24000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
