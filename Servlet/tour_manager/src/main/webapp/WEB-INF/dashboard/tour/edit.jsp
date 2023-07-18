@@ -26,29 +26,7 @@
     <title>Admin</title>
 </head>
 <body>
-<div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-white" id="sidebar-wrapper">
-        <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                class="fas fa-user-secret me-2"></i>Admin</div>
-        <div class="list-group list-group-flush my-3">
-            <a href="admin.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold""><i
-                class="fas fa-user"></i> Tài Khoản</a>
-            <a href="orderlist.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-project-diagram me-2">Quản lý Đơn</i>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                    class="fas fa-receipt"></i> Quản lý Tour</a>
-            <a href="customerlist.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-users"></i> Khách hàng</a>
-
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-receipt"></i> Doanh thu</a>
-
-            <a href="signIn.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                    class="fas fa-power-off me-2"></i>Đăng Xuất</a>
-        </div>
-    </div>
+<jsp:include page="/WEB-INF/dashboard/layout/sidebar.jsp"></jsp:include>
 <div class="container d-flex justify-content-center">
     <div class="col-6 mt-5 ">
         <form method="post">

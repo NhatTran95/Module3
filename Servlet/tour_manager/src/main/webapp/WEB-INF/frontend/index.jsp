@@ -80,9 +80,20 @@
                 <div class="left-items">
                     <i class="fa-sharp fa-solid fa-cart-shopping" id="cart-icon"></i><span class="cart-price">0</span>
                 </div>
-                <div class="right-items">
-                    <a class="nav-link" href="signIn.html">Đăng nhập</a>
-                </div>
+                <c:if test="${sessionScope.user != null}">
+                    <div class="right-items">
+                        <a class="nav-link" href="/login">${sessionScope.user.getUsername()}</a>
+                    </div>
+                    <div class="right-items">
+                        <a class="nav-link" href="/logout">Đăng xuất</a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.user == null}">
+                    <div class="right-items">
+                        <a class="nav-link" href="/login">Đăng nhập</a>
+                    </div>
+                </c:if>
+
 
             </form>
 
@@ -143,14 +154,14 @@
                 </c:forEach>
 
         </div>
-        <div class="d-flex justify-content-end mt-5">
+        <div class="d-flex justify-content-end mt-2">
             <ul class="pagination">
                 <c:if test="${pageable.getPage() > 1}">
-                    <li class="page-item"><a class="page-link" href="/home?page=${pageable.page}#packages">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="/home?page=${pageable.page - 1}#packages">Previous</a></li>
                 </c:if>
 
                 <c:forEach begin="1" end="${pageable.getTotal()}" var="i">
-                    <li class="page-item"><a class="page-link" href="/home?page=${i}#packages">${i}</a></li>
+                    <li class="page-item ${pageable.page == i ? 'active' : ''}"><a class="page-link" href="/home?page=${i}#packages">${i}</a></li>
                 </c:forEach>
                 <c:if test="${pageable.getPage() < pageable.getTotal()}">
                     <li class="page-item"><a class="page-link" href="/home?page=${pageable.page + 1}#packages">Next</a></li>

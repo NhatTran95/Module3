@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+* {
+    font-family: 'Noto Serif', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: 16px;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+:root {
+    --main-color: #00B0B8;
+    --text-color: #020102;
+    --bg-color: #fff;
+}
+
+/* Navbar Star */
+#navbar {
+    background-color: #f9f9f9;
+}
+
+#logo {
+    font-size: 36px;
+    font-weight: 700;
+    color: black;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 5px;
+}
+
+#logo span {
+    color: #00B0B8;
+}
+
+.navbar-toggler span {
+    color: #00B0B8;
+}
+
+.navbar-nav {
+    margin-left: 20px;
+}
+
+.nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 550;
+    color: black;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+
+}
+
+.nav-item .nav-link:hover {
+    background: #00B0B8;
+    color: white;
+}
+
+#navbar form a  {
+    background: #00B0B8;
+    color: #020102;
+    border: none;
+    margin-left: 10px;
+}
+#navbar form a:hover{
+    background: #00B0B8;
+    color: #f9f9f9;
+}
+.nav-item {
+    margin-left: 10px;
+}
+
+/* nav End */
+
+/*------------ Login container ------------*/
+.box-area{
+    width: 930px;
+}
+/*------------ Right box ------------*/
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+/*------------ Custom Placeholder ------------*/
+::placeholder{
+    font-size: 16px;
+}
+.rounded-4{
+    border-radius: 20px;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+/*------------ For small screens------------*/
+@media only screen and (max-width: 768px){
+    .box-area{
+        margin: 0 10px;
+    }
+    .left-box{
+        height: 100px;
+        overflow: hidden;
+    }
+    .right-box{
+        padding: 20px;
+    }
+}

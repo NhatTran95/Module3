@@ -1,7 +1,9 @@
 package com.codegym.tour_manager.controller;
 
 import com.codegym.tour_manager.AppConfig.AppConfig;
+import com.codegym.tour_manager.model.ERole;
 import com.codegym.tour_manager.model.Tour;
+import com.codegym.tour_manager.model.User;
 import com.codegym.tour_manager.service.ITourService;
 import com.codegym.tour_manager.service.TourServiceMyspl;
 import com.codegym.tour_manager.utils.ValidatesUtils;
@@ -24,6 +26,14 @@ public class TourServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute("user");
+        boolean isAdmin = user != null && user.getRole() == ERole.ADMIN;
+        if (!isAdmin) {
+            resp.sendRedirect("/login");
+            return;
+        }
+
+
         String action = req.getParameter("action");
         if (action == null) {
             action = "";
