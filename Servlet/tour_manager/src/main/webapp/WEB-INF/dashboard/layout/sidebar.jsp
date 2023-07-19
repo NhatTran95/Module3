@@ -7,12 +7,12 @@
     <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
             class="fas fa-user-secret me-2"></i>${sessionScope.user.getUsername()}</div>
     <div class="list-group list-group-flush my-3">
-      <a href="/admin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold active"><i
+      <a href="/admin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold "><i
               class="fas fa-user"></i> Tài Khoản</a>
       <a href="orderlist.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
               class="fas fa-project-diagram me-2"></i>Quản lý Đơn
       </a>
-      <a href="/tours" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+      <a href="/tours" class="list-group-item list-group-item-action bg-transparent second-text fw-bold active"><i
               class="fas fa-receipt"></i> Quản lý Tour</a>
       <a href="/customer" class="list-group-item list-group-item-action bg-transparent second-text"><i
               class="fas fa-users"></i> Khách hàng</a>

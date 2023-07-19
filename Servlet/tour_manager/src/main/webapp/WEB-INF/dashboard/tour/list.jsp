@@ -90,7 +90,8 @@
                 <td>${p.getRoute()}</td>
                 <td>${p.getStartDate()}</td>
                 <td>${p.getEndDate()}</td>
-                <td>${p.getPrice()}</td>
+<%--                String.format("%.0f", t.getPrice())--%>
+                <td>${String.format("%.0f", p.getPrice())}</td>
                 <td><img src="${p.getImg()}" width="50px"></td>
                 <td>
                   <a href="/tours?action=edit&id=${p.getId()}"><i class="fa-solid fa-pen-to-square"></i></a>

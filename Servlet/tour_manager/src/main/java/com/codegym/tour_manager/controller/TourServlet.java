@@ -151,7 +151,7 @@ public class TourServlet extends HttpServlet {
     private void validateRoute(HttpServletRequest req, Tour tour, List<String> errors) {
         String route = req.getParameter("route");
         if(!ValidatesUtils.isDesValid(route)){
-            errors.add("Lộ trình không hợp lệ, bắt đầu bằng chữ cái và phải có từ 15-50 kí tự");
+            errors.add("Lộ trình không hợp lệ, bắt đầu bằng chữ cái và phải có từ 15-100 kí tự");
 
         }
         tour.setRoute(route);

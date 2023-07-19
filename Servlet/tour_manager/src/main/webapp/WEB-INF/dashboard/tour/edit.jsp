@@ -83,7 +83,8 @@
             <div class="row mb-3">
                 <label class="col-3" >Price: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="price" value="${tour.getPrice()}"/>
+<%--                    String.format("%.0f", t.getPrice())--%>
+                    <input type="text" class="form-control" name="price" value="${String.format("%.0f", tour.getPrice())}"/>
                 </div>
             </div>
             <div class="row mb-3">

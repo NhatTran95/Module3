@@ -1,6 +1,7 @@
 package com.codegym.tour_manager.controller;
 
 import com.codegym.tour_manager.AppConfig.AppConfig;
+import com.codegym.tour_manager.model.ERole;
 import com.codegym.tour_manager.model.User;
 import com.codegym.tour_manager.service.IUserService;
 import com.codegym.tour_manager.service.UserService;
@@ -20,6 +21,13 @@ public class CustomerServlet extends HttpServlet {
     private IUserService userService = new UserService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute("user");
+        boolean isAdmin = user != null && user.getRole() == ERole.ADMIN;
+        if (!isAdmin) {
+            resp.sendRedirect("/login");
+            return;
+        }
+
         List<User> users = userService.findRoleUser();
         req.setAttribute("users", users);
 

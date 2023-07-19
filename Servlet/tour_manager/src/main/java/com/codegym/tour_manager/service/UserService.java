@@ -93,7 +93,37 @@ public class UserService implements IUserService{
 
     @Override
     public void updateUser(int id, User user) {
+        try{
+            Connection connection =getConnection();
+//
+            PreparedStatement pr = connection.prepareStatement("UPDATE `users` SET `fullname` = ?, `email` = ?, `phone` = ? WHERE `id` = ?");
+            pr.setString(1, user.getFullname());
+            pr.setString(2, user.getEmail());
+            pr.setString(3, user.getPhone());
+            pr.setInt(4, id);
+            System.out.println("update: " + pr);
+            pr.executeUpdate();
+            connection.close();
 
+        }catch (SQLException e){
+            printSQLException(e);
+        }
+    }
+
+    @Override
+    public void updatePassword(int id, User user){
+        try{
+            Connection connection = getConnection();
+            String strPass = PasswordUtils.hashPassword(user.getPassword());
+            PreparedStatement pr = connection.prepareStatement("UPDATE `users` SET `passWord` = ? WHERE `id` = ?");
+            pr.setString(1, strPass);
+            pr.setInt(2, id);
+            System.out.println("updatePassword: " + pr);
+            pr.executeUpdate();
+            connection.close();
+        }catch (SQLException e){
+            printSQLException(e);
+        }
     }
     @Override
     public List<User> findRoleUser(){
@@ -115,5 +145,30 @@ public class UserService implements IUserService{
         }
         return users;
 
+    }
+    public User findUserById(int id) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM users WHERE `id` like ?");
+            ps.setInt(1, id );
+            System.out.println("findUserById: " + ps);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+//                int idDB = rs.getInt("id");
+                String usernameDB = rs.getString("userName");
+                String passwordDB = rs.getString("passWord");
+                String fullname = rs.getString("fullname");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                String role = rs.getString("role");
+                ERole eRole = ERole.valueOf(role);
+//                return new User(usernameDB, passwordDB, eRole);
+                return new User(id, usernameDB, passwordDB, fullname, email, phone, eRole);
+            }
+
+        } catch (SQLException sqlException) {
+            printSQLException(sqlException);
+        }
+        return null;
     }
 }

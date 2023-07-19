@@ -10,5 +10,8 @@ public interface IUserService {
     void createUser(User user);
 
     void updateUser(int id, User user);
+
+    void updatePassword(int id, User user);
     List<User> findRoleUser();
+    User findUserById(int id);
 }

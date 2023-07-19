@@ -67,7 +67,7 @@
                     <a class="nav-link" href="#about">Liên Hệ</a>
                 </li>
                 <li class="nav-item ">
-                        <form method="get" class="d-flex" >
+                        <form method="get" class="d-flex" action="/home?kw=${pageable.getKw()}#packages" >
                             <input class="form-control me-2" type="text" placeholder="Tìm kiếm" name="kw" value="${pageable.getKw()}">
                             <button class="search">Search</button>
                         </form>
@@ -82,7 +82,7 @@
                 </div>
                 <c:if test="${sessionScope.user != null}">
                     <div class="right-items">
-                        <a class="nav-link" href="/login">${sessionScope.user.getUsername()}</a>
+                        <a class="nav-link" href="${sessionScope.user.getRole().toString().equals('ADMIN') ? '/admin' : '/user'}">${sessionScope.user.getUsername()}</a>
                     </div>
                     <div class="right-items">
                         <a class="nav-link" href="/logout">Đăng xuất</a>
