@@ -87,7 +87,7 @@
       <div class="row mb-3">
         <label class="col-3" for="">Img: </label>
         <div class="col-9">
-          <input type="text" class="form-control" name="img"/>
+          <input type="file" class="form-control" name="img"/>
         </div>
       </div>
 

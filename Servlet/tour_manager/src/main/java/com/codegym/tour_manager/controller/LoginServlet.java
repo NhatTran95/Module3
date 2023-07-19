@@ -1,6 +1,7 @@
 package com.codegym.tour_manager.controller;
 
 import com.codegym.tour_manager.AppConfig.AppConfig;
+import com.codegym.tour_manager.model.ERole;
 import com.codegym.tour_manager.model.User;
 import com.codegym.tour_manager.service.IUserService;
 import com.codegym.tour_manager.service.UserService;
@@ -30,7 +31,15 @@ public class LoginServlet extends HttpServlet {
         User user = userService.findUserByUserName(username);
         if (user != null && PasswordUtils.isValidPassword(password, user.getPassword())) {
             req.getSession().setAttribute("user", user);
-            resp.sendRedirect("/home");
+//            resp.sendRedirect("/home");
+            boolean isAdmin = user.getRole() == ERole.ADMIN;
+            if (isAdmin) {
+                resp.sendRedirect("/admin");
+            }
+            boolean isUser = user.getRole() == ERole.USER;
+            if (isUser) {
+                resp.sendRedirect("/home");
+            }
 
         }else {
             // thêm các message lỗi vào đây

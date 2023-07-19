@@ -90,7 +90,7 @@
             <div class="row mb-3">
                 <label class="col-3" >Img: </label>
                 <div class="col-9">
-                    <input type="text" class="form-control" name="img" value="${tour.getImg()}"/>
+                    <input type="file" class="form-control" name="img" value="${tour.getImg()}"/>
                 </div>
             </div>
 

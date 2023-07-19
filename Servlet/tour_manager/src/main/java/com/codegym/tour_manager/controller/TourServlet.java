@@ -116,7 +116,7 @@ public class TourServlet extends HttpServlet {
         String endDateStr = req.getParameter("endDate");
         LocalDate endDate = LocalDate.parse(endDateStr);
         String img = req.getParameter("img");
-        tour.setImg(img);
+        tour.setImg("\\frontend\\assets\\image\\" + img);
         tour.setStartDate(startDate);
         tour.setEndDate(endDate);
 
@@ -191,7 +191,7 @@ public class TourServlet extends HttpServlet {
         String endDateStr = req.getParameter("endDate");
         LocalDate endDate = LocalDate.parse(endDateStr);
         String img = req.getParameter("img");
-        tour.setImg(img);
+        tour.setImg("\\frontend\\assets\\image\\"+img);
         tour.setStartDate(startDate);
         tour.setEndDate(endDate);
 
