@@ -70,7 +70,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void createUser(User user) {
+    public User createUser(User user) {
         try {
             Connection connection = getConnection();
 
@@ -86,9 +86,18 @@ public class UserService implements IUserService{
 
             System.out.println("createUser: " + preparedStatement);
             preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("SELECT LAST_INSERT_ID() as last_id;");
+            System.out.println("createUser: " + preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int lastId = rs.getInt("last_id");
+                user.setId(lastId);
+            }
+
         } catch (SQLException sqlException) {
             printSQLException(sqlException);
         }
+        return user;
     }
 
     @Override

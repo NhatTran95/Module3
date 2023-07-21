@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +79,7 @@
 
             <form class="d-flex">
                 <div class="left-items">
-                    <i class="fa-sharp fa-solid fa-cart-shopping" id="cart-icon"></i><span class="cart-price">0</span>
+                        <i onclick="gotoCart()"  class="fa-sharp fa-solid fa-cart-shopping" id="cart-icon"></i><span class="cart-price"></span>
                 </div>
                 <c:if test="${sessionScope.user != null}">
                     <div class="right-items">
@@ -145,8 +146,9 @@
                                     <i class="fa-solid fa-star checked"></i>
                                     <i class="fa-solid fa-star "></i>
                                 </div>
-                                <h6>Giá: <strong> ${String.format("%.0f", t.getPrice())} VND</strong></h6>
-                                <a href="#book">Book Now</a>
+<%--                                <h6>Giá: <strong> ${String.format("%.0f", t.getPrice())} VND</strong></h6>--%>
+                                <h6>Giá: <strong> <fmt:formatNumber value="${t.getPrice()}" pattern="#,##0" /> VND</strong></h6>
+                                <a href="/cart?action=add&id=${t.getId()}">Book Now</a>
                             </div>
                         </div>
 
@@ -385,33 +387,41 @@
 <%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"--%>
 <%--        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"--%>
 <%--        crossorigin="anonymous"></script>--%>
+<%--<script>--%>
+<%--    // Header--%>
+<%--    let header = document.querySelector('header');--%>
+<%--    window.addEventListener('scroll', () => {--%>
+<%--        header.classList.toggle('shadow', window.scrollY > 0);--%>
+<%--    });--%>
+<%--    let clickButtons = document.querySelectorAll("#book-click");--%>
+<%--    let clickCount = document.querySelector("#click-count");--%>
+<%--    let count = 0;--%>
+<%--    for (let i = 0; i < clickButtons.length; i++) {--%>
+<%--        clickButtons[i].addEventListener("click", function () {--%>
+<%--            count++;--%>
+<%--            clickCount.innerHTML = count;--%>
+<%--            clickCount.style.color = "#00B0B8";--%>
+<%--        });--%>
+<%--    }--%>
+<%--    let aboutBtn = document.querySelector('#about-btn');--%>
+<%--    let moreContent = document.querySelector('#more-content');--%>
+<%--    aboutBtn.addEventListener('click', function () {--%>
+<%--        event.preventDefault();--%>
+<%--        moreContent.style.display = 'block';--%>
+<%--        aboutBtn.style.display = 'none';--%>
+<%--    });--%>
+<%--    moreContent.addEventListener('click', function () {--%>
+<%--        moreContent.style.display = 'none';--%>
+<%--        aboutBtn.style.display = 'block';--%>
+<%--    });--%>
+<%--</script>--%>
+
 <script>
-    // Header
-    let header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('shadow', window.scrollY > 0);
-    });
-    let clickButtons = document.querySelectorAll("#book-click");
-    let clickCount = document.querySelector("#click-count");
-    let count = 0;
-    for (let i = 0; i < clickButtons.length; i++) {
-        clickButtons[i].addEventListener("click", function () {
-            count++;
-            clickCount.innerHTML = count;
-            clickCount.style.color = "#00B0B8";
-        });
+    function gotoCart(){
+        let url = `/cart`;
+
+        window.location.assign(url);
     }
-    let aboutBtn = document.querySelector('#about-btn');
-    let moreContent = document.querySelector('#more-content');
-    aboutBtn.addEventListener('click', function () {
-        event.preventDefault();
-        moreContent.style.display = 'block';
-        aboutBtn.style.display = 'none';
-    });
-    moreContent.addEventListener('click', function () {
-        moreContent.style.display = 'none';
-        aboutBtn.style.display = 'block';
-    });
 </script>
 </body>
 

@@ -18,7 +18,6 @@ public class UTF8Filter extends HttpFilter {
 
 
         httpServletResponse.setCharacterEncoding("UTF-8");
-        httpServletResponse.setContentType("text/html");
         chain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

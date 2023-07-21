@@ -82,7 +82,7 @@
     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
          style="background: #00B0B8;">
       <div class="featured-image mb-3">
-        <img src="" class="img-fluid" style="width: 250px;">
+        <img src="/frontend/assets/image/vinh-ha-long-1.jpg" class="img-fluid mt-3" style="width: 450px;">
       </div>
       <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">New
         here?</p>
@@ -110,17 +110,7 @@
             <input type="password" class="form-control form-control-lg bg-light fs-6"
                    placeholder="Password" name="password">
           </div>
-<%--          <div class="input-group mb-5 d-flex justify-content-between">--%>
-<%--            <div class="form-check">--%>
-<%--              <input type="checkbox" class="form-check-input" id="formCheck">--%>
-<%--              <label for="formCheck" class="form-check-label text-secondary"><small>Ghi nhớ đăng--%>
-<%--                nhập</small></label>--%>
-<%--            </div>--%>
-<%--            <div class="forgot">--%>
-<%--              <small><a href="#">Quên mật khẩu?</a></small>--%>
-<%--            </div>--%>
-<%--          </div>--%>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 mt-3">
             <button class="btn btn-lg btn-primary w-100 fs-6"
                     style="background: #00B0B8   ; border: none;">Đăng nhập</button>
           </div>

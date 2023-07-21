@@ -82,7 +82,7 @@
     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
          style="background: #00B0B8;">
       <div class="featured-image mb-3">
-        <img src="./image/travel.jpg" class="img-fluid" style="width: 350px;">
+        <img src="/frontend/assets/image/halong2.jpg" class="img-fluid mt-3" style="width: 450px;">
       </div>
       <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">New
         here?</p>
@@ -106,18 +106,10 @@
             <input type="text" class="form-control form-control-lg bg-light fs-6"
                    placeholder="Tên tài khoản" name="username">
           </div>
-          <%--        <div class="input-group mb-3">--%>
-          <%--          <input type="text" class="form-control form-control-lg bg-light fs-6"--%>
-          <%--                 placeholder="Địa chỉ Email">--%>
-          <%--        </div>--%>
           <div class="input-group mb-3">
             <input type="password" class="form-control form-control-lg bg-light fs-6"
                    placeholder="Mật Khẩu" name="password">
           </div>
-          <%--        <div class="input-group mb-3">--%>
-          <%--          <input type="password" class="form-control form-control-lg bg-light fs-6"--%>
-          <%--                 placeholder="Nhập lại mật Khẩu">--%>
-          <%--        </div>--%>
           <div class="input-group mb-3">
             <button class="btn btn-lg btn-primary w-100 fs-6"
                     style="background: #00B0B8    ; border: none;">Đăng Ký</button>

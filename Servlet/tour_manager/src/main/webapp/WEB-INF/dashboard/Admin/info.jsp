@@ -17,6 +17,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.12/sweetalert2.css" integrity="sha512-K0TEY7Pji02TnO4NY04f+IU66vsp8z3ecHoID7y0FSVRJHdlaLp/TkhS5WDL3OygMkVns4bz0/ah4j8M3GgguA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.12/sweetalert2.min.js" integrity="sha512-JbRQ4jMeFl9Iem8w6WYJDcWQYNCEHP/LpOA11LaqnbJgDV6Y8oNB9Fx5Ekc5O37SwhgnNJdmnasdwiEdvMjW2Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="/dashboard/assets/admin.css" />
   <title>Admin</title>
 </head>
@@ -69,7 +73,35 @@
         <h3 class="fs-4 mb-3">Hồ Sơ Của Tôi</h3>
         <div class="col">
           <table class="table bg-white rounded shadow-sm  table-hover">
-            <form method="post">
+              <c:if test="${requestScope.messageEditNew !=null}">
+                  <script>
+                      window.onload = ()=>{
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Sửa thành công',
+                              showConfirmButton: false,
+                              timer: 1500
+                          })
+                      }
+                  </script>
+
+              </c:if>
+              <c:if test="${sessionScope.messageEditPass != null}">
+                  <script>
+                      window.onload = ()=>{
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Sửa thành công',
+                              showConfirmButton: false,
+                              timer: 1500
+                          })
+                      }
+                  </script>
+<%--                  <% session.setAttribute("messageEditPass", null);%>--%>
+              </c:if>
+            <form>
 
               <div class="mb-3">
                 <label class="small mb-1" for="inputUsername">Username:</label>
@@ -103,9 +135,10 @@
 <%--                </div>--%>
               </div>
               <!-- Save changes button-->
-              <a href="/admin?action=edit&id=${sessionScope.user.getId()}"><button class="btn btn-primary" type="button">Chỉnh sửa thông tin</button></a>
-                <a href="/password?action=edit&id=${sessionScope.user.getId()}"><button class="btn btn-primary m-5" type="button">Đổi mật khẩu</button></a>
+
             </form>
+              <a href="/admin?action=edit&id=${sessionScope.user.getId()}"><button class="btn btn-primary" type="button">Chỉnh sửa thông tin</button></a>
+              <a href="/password?action=edit&id=${sessionScope.user.getId()}"><button class="btn btn-primary m-5" type="button">Đổi mật khẩu</button></a>
 
           </table>
         </div>

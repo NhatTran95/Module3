@@ -53,47 +53,34 @@
     </div>
     <div class="container d-flex justify-content-center">
         <div class="col-6 mt-5 ">
+            <c:if test="${requestScope.errors != null}">
+                <div class="alert alert-danger">
+                    <ul>
+                        <c:forEach items="${requestScope.errors}" var="e">
+                            <li>${e}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </c:if>
             <form method="post">
                 <h4>Edit</h4>
-                            <c:if test="${requestScope.errors != null}">
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        <c:forEach items="${requestScope.errors}" var="e">
-                                            <li>${e}</li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </c:if>
-                <c:if test="${requestScope.messageEdit !=null}">
-                    <script>
-                        window.onload = ()=>{
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Sửa thành công',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    </script>
-                </c:if>
 
                 <div class="row mt-3 mb-3">
                     <label class="col-3" >Mật khẩu cũ: </label>
                     <div class="col-9">
-                        <input type="text" class="form-control" name = "oldpass" value="" />
+                        <input type="text" class="form-control " name = "oldpass" value="" />
 
                     </div>
-                    <label class="col-3" >Mật khẩu mới: </label>
+                    <label class="col-3 mt-2" >Mật khẩu mới: </label>
                     <div class="col-9">
-                        <input type="text" class="form-control" name = "newpass" value="" />
+                        <input type="text" class="form-control mt-2" name = "newpass" value="" />
 
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-9 offset-3">
                         <button class="btn btn-primary">Save</button>
-                        <a href="/user"><button type="button" class="btn btn-dark">Cancel</button></a>
+                        <a href="/${sessionScope.user.getRole() == 'ADMIN' ? 'admin' : 'user'}"><button type="button" class="btn btn-dark">Cancel</button></a>
                     </div>
                 </div>
             </form>

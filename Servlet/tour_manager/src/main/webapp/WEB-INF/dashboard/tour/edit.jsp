@@ -40,19 +40,19 @@
                     </ul>
                 </div>
             </c:if>
-            <c:if test="${requestScope.message !=null}">
-                <script>
-                    window.onload = ()=>{
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Thêm thành công',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                </script>
-            </c:if>
+<%--            <c:if test="${requestScope.message !=null}">--%>
+<%--                <script>--%>
+<%--                    window.onload = ()=>{--%>
+<%--                        Swal.fire({--%>
+<%--                            position: 'top-end',--%>
+<%--                            icon: 'success',--%>
+<%--                            title: 'Thêm thành công',--%>
+<%--                            showConfirmButton: false,--%>
+<%--                            timer: 1500--%>
+<%--                        })--%>
+<%--                    }--%>
+<%--                </script>--%>
+<%--            </c:if>--%>
 
             <div class="row mt-3 mb-3">
                 <label class="col-3" >Destination: </label>

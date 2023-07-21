@@ -53,30 +53,32 @@
   </div>
   <div class="container d-flex justify-content-center">
     <div class="col-6 mt-5 ">
+
       <form method="post">
         <h4>Edit</h4>
-        <%--            <c:if test="${requestScope.errors != null}">--%>
-        <%--                <div class="alert alert-danger">--%>
-        <%--                    <ul>--%>
-        <%--                        <c:forEach items="${requestScope.errors}" var="e">--%>
-        <%--                            <li>${e}</li>--%>
-        <%--                        </c:forEach>--%>
-        <%--                    </ul>--%>
-        <%--                </div>--%>
-        <%--            </c:if>--%>
-        <c:if test="${requestScope.messageEdit !=null}">
-          <script>
-            window.onload = ()=>{
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Sửa thành công',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }
-          </script>
+        <c:if test="${requestScope.errors != null}">
+          <div class="alert alert-danger">
+            <ul>
+              <c:forEach items="${requestScope.errors}" var="e">
+                <li>${e}</li>
+              </c:forEach>
+            </ul>
+          </div>
         </c:if>
+
+<%--        <c:if test="${requestScope.messageEditnew !=null}">--%>
+<%--          <script>--%>
+<%--            window.onload = ()=>{--%>
+<%--              Swal.fire({--%>
+<%--                position: 'top-end',--%>
+<%--                icon: 'success',--%>
+<%--                title: 'Sửa thành công',--%>
+<%--                showConfirmButton: false,--%>
+<%--                timer: 1500--%>
+<%--              })--%>
+<%--            }--%>
+<%--          </script>--%>
+<%--        </c:if>--%>
 
         <div class="row mt-3 mb-3">
           <label class="col-3" >Username: </label>
@@ -110,6 +112,7 @@
         <div class="row mb-3">
           <div class="col-9 offset-3">
             <button class="btn btn-primary">Save</button>
+<%--            <a href="javascript:void(0)"><button type="submit" class="btn btn-success mr-2">Update</button></a>--%>
             <a href="/user"><button type="button" class="btn btn-dark">Cancel</button></a>
           </div>
         </div>

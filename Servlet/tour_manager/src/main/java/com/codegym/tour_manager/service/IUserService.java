@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUserService {
     User findUserByUserName(String username);
 
-    void createUser(User user);
+    User createUser(User user);
 
     void updateUser(int id, User user);
 

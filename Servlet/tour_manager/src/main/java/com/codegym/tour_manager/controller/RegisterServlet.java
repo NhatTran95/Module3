@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
         if (userService.findUserByUserName(username) == null) {
             User user = new User(username, password);
             user.setRole(ERole.USER);
-            userService.createUser(user);
+            user = userService.createUser(user);
 
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("/home");

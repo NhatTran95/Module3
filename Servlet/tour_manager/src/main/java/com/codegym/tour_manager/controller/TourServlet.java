@@ -160,9 +160,9 @@ public class TourServlet extends HttpServlet {
     private void validateDestination(HttpServletRequest req, Tour tour, List<String> errors) {
         String destination = req.getParameter("destination");
         if(!ValidatesUtils.isNameValid(destination)){
-            errors.add("Tên địa điểm không hợp lệ, bắt đầu bằng chữ cái và phải có từ 3-15 kí tự");
+            errors.add("Tên địa điểm không hợp lệ, phải có từ 3-15 kí tự");
         }
-        tour.setDestination(destination);
+        tour.setDestination(destination.toUpperCase());
     }
 
     private void validateId(HttpServletRequest req, Tour tour, List<String> errors) {
