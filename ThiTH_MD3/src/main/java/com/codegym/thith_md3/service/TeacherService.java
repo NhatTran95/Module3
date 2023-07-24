@@ -116,7 +116,7 @@ public class TeacherService extends DBContext implements ITeacherService{
     public void update(long id, Teacher teacher) {
         try{
         Connection connection = getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `teachers` SET `name` = ?, `dateOfBirth` = ?, `hobbie` = ?, `gender` = ?, `idDegree` WHERE (`id` = ?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `teachers` SET `name` = ?, `dateOfBirth` = ?, `hobbie` = ?, `gender` = ?, `idDegree` = ? WHERE (`id` = ?)");
         preparedStatement.setString(1, teacher.getName());
         LocalDate sDate = teacher.getDateOfBirth();
         java.sql.Date Date = java.sql.Date.valueOf(sDate);

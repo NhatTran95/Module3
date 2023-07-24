@@ -70,7 +70,7 @@
                 <div class="col-9">
                     <input type="radio" id="option1" name="gender" value="NAM">
                     <label for="option1">NAM</label><br>
-                    <input type="radio" id="option2" name="gender" value="NỮ">
+                    <input type="radio" id="option2" name="gender" value="NU">
                     <label for="option2">NỮ</label><br>
                 </div>
             </div>
